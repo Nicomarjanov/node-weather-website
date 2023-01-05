@@ -2,10 +2,12 @@ const path = require('path')
 
 const express = require('express')
 const hbs = require('hbs')
-const app = express()
-
 const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
+
+const app = express()
+//variable que indica el puerto donde escucha el servidor, proviene de una variable de entorno (env.PORT) y si no es suministrada por defecto toma el puerto 3000
+const port = process.env.PORT || 3000
 
 // Define pathd for express config
 const publicDirectoryPath = path.join(__dirname, '../public')
@@ -106,7 +108,7 @@ app.get('*', (req, res) => {
 })
 
 //Inicia express
-app.listen(3000, () => {
-    console.log('Server is up on port 3000')
+app.listen(port, () => {
+    console.log('Server is up on port '+ port)
 
 })
